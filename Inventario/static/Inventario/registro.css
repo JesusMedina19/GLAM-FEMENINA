@@ -1,0 +1,65 @@
+body {
+    background-image: url('./fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: auto;
+    text-align: center;
+    border: 1px solid rgb(223, 189, 205);
+    border-radius: 32px;
+    padding: 20px 30px;
+    background: transparent;
+    backdrop-filter: blur(6px);
+    box-shadow: 5px 5px 10px 0 rgba(246, 194, 234, 0.989);
+}
+.wrapper h2 {
+    font-size: 40px;
+    color: #743b57;
+}
+.input-field input {
+    width: 60%;
+    padding: 12px;
+    margin: 10px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid #929090;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+.cuenta {
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: #e8a7c6;
+    color: #000;
+    border: none;
+    cursor: pointer;
+}
+.cuenta:hover {
+    background-color: #d18bbf; /* Color al pasar el mouse */
+}
+.input-field {
+    position: relative;
+}
+.messages {
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    color: #fff; /* Color del texto */
+}
+.alert-success {
+    background-color: #28a745; /* Color de fondo para éxito */
+}
+.alert-error {
+    background-color: #dc3545; /* Color de fondo para error */
+}

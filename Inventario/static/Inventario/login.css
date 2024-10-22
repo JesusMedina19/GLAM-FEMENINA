@@ -1,0 +1,76 @@
+body {
+    background-image: url('./fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
+    text-align: center;
+    border: 1px solid rgb(223, 189, 205);
+    border-radius: 32px;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.1); /* Fondo más transparente */
+    backdrop-filter: blur(8px); /* Aumento en el blur para más suavidad */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+}
+
+.wrapper h2 {
+    font-size: 40px;
+    color: #743b57;
+}
+
+.input-field input {
+    width: 70%; /* Más ancho para mejor usabilidad */
+    padding: 12px;
+    margin: 10px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid #743b57; /* Color consistente con el título */
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #333; /* Color del texto más oscuro */
+}
+
+.input-field input:focus {
+    outline: none;
+    border-bottom: 2px solid #e8a7c6; /* Color en foco */
+    transition: border-color 0.3s ease; /* Transición suave en foco */
+}
+
+.login {
+    font-size: 18px;
+    padding: 12px 30px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff6a95, #f94e73); /* Degradado suave */
+    color: white;
+    border: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra más suave y natural */
+    transition: all 0.3s ease; /* Transición suave */
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold; /* Texto en negrita */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+.login:hover {
+    background: linear-gradient(135deg, #f94e73, #ff6a95); /* Cambia el gradiente al hacer hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más profunda en hover */
+    transform: translateY(-3px); /* Elevación ligera en hover */
+}
+
+.login:active {
+    background: linear-gradient(135deg, #f94e73, #ff6a95); /* Mantiene el color del hover al hacer clic */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra menos intensa */
+    transform: translateY(2px); /* Reduce la elevación al hacer clic */
+}
+
+.input-field {
+    position: relative;
+}
