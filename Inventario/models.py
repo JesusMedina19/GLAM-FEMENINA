@@ -23,7 +23,7 @@ class Usuario(AbstractBaseUser):
     nombre = models.CharField(max_length=30)
     rol = models.CharField(max_length=15, default="empleado")
     usuario = models.CharField(max_length=50, unique=True)
-    #contrasena = models.CharField(max_length=128)
+    contrasena = models.CharField(max_length=128)
 
     objects = UsuarioManager()  # Asegúrate de usar UsuarioManager aquí
     USERNAME_FIELD = 'usuario' 
@@ -39,7 +39,7 @@ class Cliente(models.Model):
     nombre = models.CharField(max_length = 30)
     correo = models.EmailField(max_length = 150)
     direccion = models.CharField(max_length = 150)
-    telefono = PhoneNumberField()
+    #telefono = PhoneNumberField()
 
     
     def __str__(self):
