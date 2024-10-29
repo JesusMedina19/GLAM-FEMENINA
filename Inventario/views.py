@@ -48,11 +48,11 @@ def menu_view(request):
 
 #Vista del apartado de Variedades.
 def variedades_view(request):
-    return render(request, 'variedades.html')  
+    return render(request, 'Variedades.html')  
 
 #Vista del apartado de productos capilares.
 def productos_capilares_view(request):
-    return render(request, 'productos_capilares.html')  
+    return render(request, 'Productos Capilares.html')  
 
 #Vista del apartade de uña
 def catalogo_uñas_view(request):
@@ -64,4 +64,4 @@ def catalogo_mayorista_view(request):
 
 #Vista de catalog al detal
 def catalogo_al_detal_view(request):
-    return render(request, 'catalogo_al_detalle.html')  # Asegúrate de que este archivo exista
+    return render(request, 'Catalogo al Detal.html')  
