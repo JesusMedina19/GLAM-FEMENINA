@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo Mayorista - Glam Femenina</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
     <div class="container">
         <h1>Catálogo Mayorista</h1>
         <p>Aquí encontrarás nuestra selección de productos para mayoristas.</p>
 
-        <a href="agregar-producto.html" class="add-button">Agregar Producto</a>
-        <a href="index.html" class="back-button">Regresar</a>
-      
+        <a href="{% url 'agregar_producto' %}" class="add-button">Agregar Producto</a>
+        <a href="{% url 'index' %}" class="back-button">Regresar</a>
     </div>
 </body>
 </html>

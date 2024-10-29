@@ -61,3 +61,7 @@ def catalogo_uñas_view(request):
 #Vista de catalogo mayorista
 def catalogo_mayorista_view(request):
     return render(request, 'Catalogo Mayorista.html')  
+
+#Vista de catalog al detal
+def catalogo_al_detal_view(request):
+    return render(request, 'catalogo_al_detalle.html')  # Asegúrate de que este archivo exista
