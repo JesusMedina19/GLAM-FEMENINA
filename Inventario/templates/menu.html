@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Glam Femenina</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Inventario/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="{% static 'Imagen.jpg' %}" alt="Profile" class="profile-image">
+            <h1>@glam.femenina</h1>
+            <p>Productos 100% originales ENVÍOS NACIONALES</p>
+        </div>
+
+        <div class="menu">
+            <a href="{% url 'variedades' %}" class="menu-item">VARIEDADES</a>
+            <a href="{% url 'productos_capilares' %}" class="menu-item">PRODUCTOS CAPILARES</a>
+            <a href="{% url 'catalogo_unas' %}" class="menu-item">CATÁLOGO DE UÑAS</a>
+            <a href="{% url 'catalogo_mayorista' %}" class="menu-item">CATÁLOGO MAYORISTA</a>
+            <a href="{% url 'catalogo_al_detalle' %}" class="menu-item">CATÁLOGO AL DETALLE</a>
+        </div>
+    </div>
+</body>
+</html>

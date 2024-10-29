@@ -1,65 +1,96 @@
-body {
-    background-image: url('./fondo.jpg');
+body { 
+    background-image: url('./fondo.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 .wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 450px;
-    height: auto;
+    width: 450px; /* Ancho del formulario */
+    height: auto; /* Permitir un tamaño dinámico */
     text-align: center;
-    border: 1px solid rgb(223, 189, 205);
-    border-radius: 32px;
-    padding: 20px 30px;
-    background: transparent;
-    backdrop-filter: blur(6px);
-    box-shadow: 5px 5px 10px 0 rgba(246, 194, 234, 0.989);
+    border: 1px solid rgb(223, 189, 205); /* Borde del contenedor */
+    border-radius: 32px; /* Esquinas redondeadas */
+    padding: 20px 30px; /* Espaciado interno */
+    background: transparent; /* Fondo transparente */
+    backdrop-filter: blur(6px); /* Efecto de desenfoque */
+    box-shadow: 5px 5px 10px rgba(246, 194, 234, 0.989); /* Sombra suave */
 }
+
 .wrapper h2 {
-    font-size: 40px;
-    color: #743b57;
+    font-size: 40px; /* Tamaño del encabezado */
+    color: #743b57; /* Color del texto */
 }
-.input-field input {
-    width: 60%;
-    padding: 12px;
-    margin: 10px 0;
-    display: inline-block;
-    border: none;
-    border-bottom: 2px solid #929090;
-    box-sizing: border-box;
-    background-color: transparent;
-}
-.cuenta {
-    font-size: 15px;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background-color: #e8a7c6;
-    color: #000;
-    border: none;
-    cursor: pointer;
-}
-.cuenta:hover {
-    background-color: #d18bbf; /* Color al pasar el mouse */
-}
+
 .input-field {
-    position: relative;
+    position: relative; /* Posicionamiento relativo para iconos */
+    margin-bottom: 20px; /* Espacio entre los campos */
 }
+
+.input-field input {
+    width: 60%; /* Ancho del campo de entrada */
+    padding: 12px; /* Espacio interno */
+    border: none; /* Sin borde */
+    border-bottom: 2px solid #929090; /* Borde inferior */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+    background-color: transparent; /* Fondo transparente */
+    color: #333; /* Color del texto */
+}
+
+.input-field input:focus {
+    outline: none; /* Sin contorno al enfocar */
+    border-bottom: 2px solid #e8a7c6; /* Cambio de color al enfocar */
+    transition: border-color 0.3s ease; /* Transición suave */
+}
+
+.cuenta {
+    font-size: 14px; /* Tamaño de fuente reducido */
+    padding: 8px 12px; /* Menor padding para un botón más pequeño */
+    border-radius: 10px; /* Esquinas más redondeadas */
+    background: linear-gradient(135deg, #ff6a95, #f94e73); /* Fondo con degradado */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Efectos de transición */
+    cursor: pointer; /* Cursor de puntero */
+    margin-top: 20px; /* Espacio arriba del botón */
+    width: 50%; /* Botón ocupa el 50% del ancho del contenedor */
+    font-weight: 600; /* Peso de la fuente */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Mayúsculas en el texto */
+}
+
+.cuenta:hover {
+    background: linear-gradient(135deg, #f94e73, #ff6a95); /* Cambio de color al pasar el mouse */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* Efecto hover más pronunciado */
+    transform: translateY(-2px) scale(1.02); /* Efecto hover más sutil */
+}
+
+.cuenta:active {
+    background: linear-gradient(135deg, #ff6a95, #f94e73); /* Color al hacer clic */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra al hacer clic */
+    transform: translateY(1px) scale(0.98); /* Efecto de "presión" más sutil */
+}
+
 .messages {
     margin-bottom: 20px; /* Espaciado inferior */
 }
+
 .alert {
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    padding: 10px; /* Espacio interno de alerta */
+    border-radius: 5px; /* Esquinas redondeadas */
+    margin-bottom: 15px; /* Espacio inferior */
     color: #fff; /* Color del texto */
 }
+
 .alert-success {
     background-color: #28a745; /* Color de fondo para éxito */
 }
+
 .alert-error {
     background-color: #dc3545; /* Color de fondo para error */
 }

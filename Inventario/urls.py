@@ -1,7 +1,11 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from Inventario.views import register_view , login_view, menu_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Inventario.urls', namespace='Inventario')),
+    path('',login_view, name='login'),  
+    path('menu/', menu_view, name='menu'),
+    path('registro/', register_view, name='registro'),
+    
 ]

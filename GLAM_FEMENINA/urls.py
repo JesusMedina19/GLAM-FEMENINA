@@ -1,10 +1,9 @@
+# mi_proyecto/urls.py
+
 from django.contrib import admin
-from django.urls import path
-from Inventario.views import register_view , login_view, hola_mundo_view
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hola_mundo/', hola_mundo_view, name='hola_mundo'),
-    path('registro/', register_view, name='registro'),
-    path('',login_view, name='login'),  
+    path('', include('Inventario.urls')),  # Asegúrate de incluir las URLs de la app
 ]
