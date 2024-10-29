@@ -56,4 +56,8 @@ def productos_capilares_view(request):
 
 #Vista del apartade de uña
 def catalogo_uñas_view(request):
-    return render(request, 'Catalogo Uñas.html')  # Asegúrate de que este archivo exista
+    return render(request, 'Catalogo Uñas.html')  
+
+#Vista de catalogo mayorista
+def catalogo_mayorista_view(request):
+    return render(request, 'Catalogo Mayorista.html')  
