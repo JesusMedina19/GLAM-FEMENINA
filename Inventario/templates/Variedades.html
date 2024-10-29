@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variedades - Glam Femenina</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Variedades</h1>
+        <p>Aquí encontrarás una selección de nuestros productos variados.</p>
+
+        <a href="{% url 'agregar_producto' %}" class="add-button">Agregar Producto</a>
+        
+        <a href="{% url 'index' %}" class="back-button">Regresar</a>
+        
+    </div>
+</body>
+</html>

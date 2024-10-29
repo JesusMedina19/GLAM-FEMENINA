@@ -44,15 +44,3 @@ def menu_view(request):
 
 def variedades_view(request):
     return render(request, 'variedades.html')  # Asegúrate de que este archivo exista
-
-def productos_capilares_view(request):
-    return render(request, 'productos_capilares.html')  # Asegúrate de que este archivo exista
-
-def catalogo_unas_view(request):
-    return render(request, 'catalogo_unas.html')  # Asegúrate de que este archivo exista
-
-def catalogo_mayorista_view(request):
-    return render(request, 'catalogo_mayorista.html')  # Asegúrate de que este archivo exista
-
-def catalogo_al_detalle_view(request):
-    return render(request, 'catalogo_al_detalle.html')  # Asegúrate de que este archivo exista
