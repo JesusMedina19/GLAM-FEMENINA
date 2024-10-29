@@ -53,3 +53,7 @@ def variedades_view(request):
 #Vista del apartado de productos capilares.
 def productos_capilares_view(request):
     return render(request, 'productos_capilares.html')  
+
+#Vista del apartade de uña
+def catalogo_uñas_view(request):
+    return render(request, 'Catalogo Uñas.html')  # Asegúrate de que este archivo exista
