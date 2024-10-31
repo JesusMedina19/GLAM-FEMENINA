@@ -2,26 +2,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Glam Femenina</title>
-    <link rel="stylesheet" href="{% static 'Inventario/styles.css' %}">
+    <meta charset="utf-8">
+    <title>Menu</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="{% static 'Inventario/menu.css' %}" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <div class="profile">
-            <img src="{% static 'Imagen.jpg' %}" alt="Profile" class="profile-image">
-            <h1>@glam.femenina</h1>
-            <p>Productos 100% originales ENVÍOS NACIONALES</p>
-        </div>
 
-        <div class="menu">
-            <a href="{% url 'Variedades' %}" class="menu-item">VARIEDADES</a>
-            <a href="{% url 'Productos Capilares' %}" class="menu-item">PRODUCTOS CAPILARES</a>
-            <a href="{% url 'Catalogo de uñas' %}" class="menu-item">CATÁLOGO DE UÑAS</a>
-            <a href="{% url 'Catalogo Mayorista' %}" class="menu-item">CATÁLOGO MAYORISTA</a>
-            <a href="{% url 'Catalogo al Detal' %}" class="menu-item">CATÁLOGO AL DETAL</a>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 bg-pink sidebar d-none d-md-block" id="sidebar">
+                <div class="sidebar-sticky">
+                    <h2 class="text-white text-center my-4">Glam Femenina</h2>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link active" href="{% url 'variedades' %}"><i class="fas fa-star"></i> Variedades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'productos_capilares' %}"><i class="fas fa-spa"></i> Productos Capilares</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo_uñas' %}"><i class="fas fa-hand-sparkles"></i> Catálogo de Uñas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo_mayorista' %}"><i class="fas fa-box-open"></i> Catálogo Mayorista</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo_al_detal' %}"><i class="fas fa-shopping-bag"></i> Catálogo al Detal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-file-invoice"></i> Recibos</a></li>
+                        <li class="nav-item logout-link"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                    </ul>
+                    
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="mainContent">
+                <nav class="navbar navbar-expand-md navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" id="sidebarToggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Productos Vendidos</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for venta in ventas %}
+                                <tr>
+                                    <td>{{ venta.producto }}</td>
+                                    <td>{{ venta.cantidad }}</td>
+                                    <td>${{ venta.precio_total }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="3">No hay ventas registradas en las últimas 24 horas.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

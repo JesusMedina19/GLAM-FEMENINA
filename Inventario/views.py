@@ -48,7 +48,7 @@ def menu_view(request):
 
 #Vista del apartado de Variedades.
 def variedades_view(request):
-    return render(request, 'Variedades.html')  
+    return render(request, 'Variedades.html') 
 
 #Vista del apartado de productos capilares.
 def productos_capilares_view(request):
