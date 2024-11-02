@@ -1,8 +1,11 @@
+from django.http import JsonResponse
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import  login
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from Inventario.models import Usuario  # Asegúrate de importar tu modelo User
+from .models import Producto
+from .forms import ProductoForm
 
 #Vista para ingresar a la aplicacion
 def login_view(request):
@@ -65,3 +68,19 @@ def catalogo_mayorista_view(request):
 #Vista de catalog al detal
 def catalogo_al_detal_view(request):
     return render(request, 'Catalogo al Detal.html')  
+
+
+#Vista de agregar producto
+def agregar_producto(resquest):
+    if resquest.method == 'POST':
+        form = ProductoForm(resquest.POST,resquest.FILES)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'message':'Le producto se agrego de manera correcta'}, status = 200)
+        else:
+            return JsonResponse({'Error':form.errors }, status = 400)
+    
+    else:
+        form = ProductoForm()
+        
+    return render(resquest,'agregar_producto.html',{'form':form})
