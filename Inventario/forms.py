@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario  # Asegúrate de que esto apunta a tu modelo correcto
+from .models import Usuario,Producto # Asegúrate de que esto apunta a tu modelo correcto
 
+
+#Formulario para agregar usuarios 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = Usuario
@@ -12,3 +14,10 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+#Formulario para agregar producto
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre','precio','descripcion','cantidad','imagen']
