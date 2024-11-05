@@ -109,7 +109,7 @@ def eliminar_categoria(request, id_categoria):
 
 def detalle_categoria(request, id_categoria):
     categoria = get_object_or_404(Categoria, id_categoria=id_categoria)  # Usa 'id_categoria' en lugar de 'id'
-    productos = Producto.objects.filter(categoria_producto=categoria)  # Ajusta esto a tu modelo de relación
+    productos = Producto.objects.filter(categoria=categoria)  # Ajusta esto a tu modelo de relación
 
     context = {
         'categoria': categoria,

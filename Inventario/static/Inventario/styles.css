@@ -9,91 +9,56 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.profile {
+h2 {
+    color: #ff5e99;
+    font-size: 2em;
     margin-bottom: 20px;
 }
 
-.profile-image {
-    width: 100px;
-    border-radius: 50%;
-    border: 3px solid #ff8fb1;
-}
-
-h1 {
-    font-size: 2em;
-    color: #ff5e99;
-    margin: 10px 0;
-}
-
-p {
+h3 {
     color: #ff8fb1;
-    font-size: 1.2em;
+    margin-top: 30px;
 }
 
-.menu {
+.producto-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+}
+
+.producto-item {
+    flex: 0 1 calc(33.33% - 10px);  /* Tres elementos por fila */
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.menu-item {
-    display: block;
-    width: 90%;
+    padding: 10px;
     margin: 10px 0;
-    padding: 15px;
     background-color: #fff;
-    border-radius: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ffb6c1;
+}
+
+.producto-nombre {
+    font-weight: 600;
     color: #ff5e99;
-    text-decoration: none;
-    font-size: 1.2em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
-    border: 2px solid #ffb6c1;
+    font-size: 1em;
+    margin: 0;
 }
 
-.menu-item:hover {
-    background-color: #ffd1dc;
-}
-
-.menu-item:active {
+.producto-precio {
     background-color: #ff5e99;
     color: white;
-}
-
-.back-button {
-    background-color: #ec69b5;
-    color: white;
-    padding: 10px 16px;
+    padding: 5px 8px;
     border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    text-decoration: none;
-    margin: 5px;
-}
-
-.back-button:hover {
-    background-color: #f355b1;
-}
-
-.add-button {
-    background-color: white;
-    color: #ec69b5;
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: 2px solid #ec69b5;
-    cursor: pointer;
-    font-size: 16px;
-    text-decoration: none;
-    margin: 5px;
-}
-
-.add-button:hover {
-    background-color: #ffd1dc;
-    color: #ff5e99;
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-top: 5px;
 }

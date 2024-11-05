@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager,BaseUserManager
 from phonenumber_field.modelfields import PhoneNumberField
 
-
 class UsuarioManager(BaseUserManager):
     def create_user(self, usuario, contrasena=None, **extra_fields):
         if not usuario:

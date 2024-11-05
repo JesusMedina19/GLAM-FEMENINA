@@ -17,8 +17,6 @@
                 <div class="sidebar-sticky">
                     <h2 class="text-white text-center my-2">Glam Femenina</h2>
                     <ul class="nav flex-column">
-
-                        <!-- Menú desplegable de Configuración -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="configDropdown" role="button" data-toggle="collapse" data-target="#configSubmenu" aria-expanded="false" aria-controls="configSubmenu">
                                 <i class="fas fa-cog"></i> Configuración
@@ -28,7 +26,6 @@
                                 <a class="nav-link" href="#" data-toggle="modal" data-target="#crearCategoriaModal"><i class="fas fa-folder-plus"></i> Crear Categoría</a>
                             </div>
                         </li>
-
                         <li class="nav-item"><a class="nav-link" href="{% url 'categorias' %}"><i class="fas fa-spa"></i> Categorias</a></li>
                         <li class="nav-item logout-link"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                     </ul>
@@ -75,6 +72,8 @@
         </div>
     </div>
 
+    <!-- Modal de Agregar Producto -->
+<!-- Modal de Agregar Producto -->
 <!-- Modal de Agregar Producto -->
 <div class="modal fade" id="agregarProductoModal" tabindex="-1" role="dialog" aria-labelledby="agregarProductoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -85,45 +84,52 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}  <!-- Esto mostrará todos los campos, incluyendo la categoría -->
-                <button type="submit">Agregar Producto</button>
-            </form>
-            
-        </div>
-    </div>
-</div>
-
-<!-- Modal de Crear Categoría -->
-<div class="modal fade" id="crearCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="crearCategoriaModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="crearCategoriaModalLabel">Crear Categoría</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="POST" action="{% url 'crear_categoria' %}">
+            <form method="POST" action="{% url 'agregar_producto' %}">
                 {% csrf_token %}
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nombre_categoria">Nombre de la Categoría</label>
-                        <input type="text" class="form-control" id="nombre_categoria" name="nombre" required>
-                    </div>
+                    {{ form.as_p }} <!-- Renderiza el formulario aquí -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Crear Categoría</button>
+                    <button type="submit" class="btn btn-primary">Agregar Producto</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- Modal de Crear Categoría -->
+    <div class="modal fade" id="crearCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="crearCategoriaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="crearCategoriaModalLabel">Crear Categoría</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{% url 'crear_categoria' %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nombre_categoria">Nombre de la Categoría</label>
+                            <input type="text" class="form-control" id="nombre_categoria" name="nombre" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Crear Categoría</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de jQuery y Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
