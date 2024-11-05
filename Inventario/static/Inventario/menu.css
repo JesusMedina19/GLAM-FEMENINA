@@ -96,6 +96,75 @@ main {
   padding-bottom: 30px; /* Espacio inferior para separarlo del borde */
 }
 
+/* Estilos para el formulario */
+form {
+  background-color: #ffffff; /* Color de fondo blanco para el formulario */
+  border-radius: 15px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 20px; /* Espaciado interno */
+  margin: 20px 0; /* Margen superior e inferior */
+}
+
+form h2 {
+  font-family: 'Poppins', sans-serif; /* Fuente dinámica */
+  font-size: 24px; /* Tamaño de fuente del encabezado */
+  color: #f06e8c; /* Color rosa para el texto del encabezado */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+form label {
+  font-weight: 500; /* Peso de la fuente para etiquetas */
+  color: #333; /* Color del texto de las etiquetas */
+  display: block; /* Para que cada etiqueta ocupe una línea completa */
+  margin-bottom: 5px; /* Espacio inferior entre la etiqueta y el input */
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form select {
+  width: 100%; /* Ocupa el 100% del ancho */
+  padding: 10px; /* Espaciado interno */
+  margin-bottom: 15px; /* Espacio inferior */
+  border: 2px solid #f06e8c; /* Borde rosa */
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-sizing: border-box; /* Para incluir el padding en el ancho total */
+  font-family: 'Poppins', sans-serif; /* Fuente dinámica */
+}
+
+form input[type="checkbox"] {
+  margin-right: 10px; /* Espacio a la derecha del checkbox */
+}
+
+form button {
+  background-color: #f06e8c; /* Color de fondo rosa */
+  color: white; /* Color de texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  border-radius: 5px; /* Esquinas redondeadas */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  font-size: 16px; /* Tamaño de fuente */
+  transition: background-color 0.3s; /* Transición para el fondo */
+}
+
+form button:hover {
+  background-color: #ffb3d9; /* Color más claro al pasar el mouse */
+}
+
+/* Estilo para los mensajes de error o éxito */
+.message {
+  margin-top: 10px; /* Espacio superior para el mensaje */
+  font-weight: bold; /* Peso de la fuente para destacar el mensaje */
+}
+
+.success {
+  color: green; /* Color verde para mensajes de éxito */
+}
+
+.error {
+  color: red; /* Color rojo para mensajes de error */
+}
+
 /* Media Queries para responsividad */
 @media (max-width: 992px) {
   .sidebar {

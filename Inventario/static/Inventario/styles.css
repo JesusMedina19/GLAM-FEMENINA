@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffe6f0; 
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffe6f0;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -19,7 +21,7 @@ body {
 .profile-image {
     width: 100px;
     border-radius: 50%;
-    border: 3px solid #ff8fb1; 
+    border: 3px solid #ff8fb1;
 }
 
 h1 {
@@ -29,7 +31,7 @@ h1 {
 }
 
 p {
-    color: #ff8fb1; 
+    color: #ff8fb1;
     font-size: 1.2em;
 }
 
@@ -46,19 +48,52 @@ p {
     padding: 15px;
     background-color: #fff;
     border-radius: 30px;
-    color: #ff5e99; 
+    color: #ff5e99;
     text-decoration: none;
     font-size: 1.2em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s;
-    border: 2px solid #ffb6c1; 
+    border: 2px solid #ffb6c1;
 }
 
 .menu-item:hover {
-    background-color: #ffd1dc; 
+    background-color: #ffd1dc;
 }
 
 .menu-item:active {
-    background-color: #ff5e99; 
+    background-color: #ff5e99;
     color: white;
+}
+
+.back-button {
+    background-color: #ec69b5;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.back-button:hover {
+    background-color: #f355b1;
+}
+
+.add-button {
+    background-color: white;
+    color: #ec69b5;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 2px solid #ec69b5;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.add-button:hover {
+    background-color: #ffd1dc;
+    color: #ff5e99;
 }

@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-5">
         <h2>Agregar Producto</h2>
-        <form action="{% url 'guardar_producto' %}" method="post">
+        <form action="{% url 'menu' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
                 <label for="nombre">Nombre del Producto</label>

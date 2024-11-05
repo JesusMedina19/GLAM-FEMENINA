@@ -15,17 +15,23 @@
         <div class="row">
             <nav class="col-md-2 bg-pink sidebar d-none d-md-block" id="sidebar">
                 <div class="sidebar-sticky">
-                    <h2 class="text-white text-center my-4">Glam Femenina</h2>
+                    <h2 class="text-white text-center my-2">Glam Femenina</h2>
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link active" href="{% url 'variedades' %}"><i class="fas fa-star"></i> Variedades</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'productos_capilares' %}"><i class="fas fa-spa"></i> Productos Capilares</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo_uñas' %}"><i class="fas fa-hand-sparkles"></i> Catálogo de Uñas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo_mayorista' %}"><i class="fas fa-box-open"></i> Catálogo Mayorista</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'catalogo_al_detal' %}"><i class="fas fa-shopping-bag"></i> Catálogo al Detal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-file-invoice"></i> Recibos</a></li>
+
+                        <!-- Menú desplegable de Configuración -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="configDropdown" role="button" data-toggle="collapse" data-target="#configSubmenu" aria-expanded="false" aria-controls="configSubmenu">
+                                <i class="fas fa-cog"></i> Configuración
+                            </a>
+                            <div class="collapse" id="configSubmenu">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#agregarProductoModal"><i class="fas fa-plus"></i> Agregar Producto</a>
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#crearCategoriaModal"><i class="fas fa-folder-plus"></i> Crear Categoría</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'categorias' %}"><i class="fas fa-spa"></i> Categorias</a></li>
                         <li class="nav-item logout-link"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                     </ul>
-                    
                 </div>
             </nav>
 
@@ -69,8 +75,55 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Modal de Agregar Producto -->
+<div class="modal fade" id="agregarProductoModal" tabindex="-1" role="dialog" aria-labelledby="agregarProductoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="agregarProductoModalLabel">Agregar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- Esto mostrará todos los campos, incluyendo la categoría -->
+                <button type="submit">Agregar Producto</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Crear Categoría -->
+<div class="modal fade" id="crearCategoriaModal" tabindex="-1" role="dialog" aria-labelledby="crearCategoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearCategoriaModalLabel">Crear Categoría</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{% url 'crear_categoria' %}">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nombre_categoria">Nombre de la Categoría</label>
+                        <input type="text" class="form-control" id="nombre_categoria" name="nombre" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Crear Categoría</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -63,10 +63,11 @@ class Producto(models.Model):
     precio = models.DecimalField(max_digits = 10,
                                 decimal_places = 2)
     descripcion = models.TextField()
-    disponible = models.IntegerField()
+    disponible = models.BooleanField(default=True)
     imagen = models.ImageField(upload_to = 'productos/',
                                 null= True, blank = True)
-    
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+
     def __str__(self) -> str:
         return f"Nombre: {self.nombre}, Precio: {self.precio}, " \
             f"Descripcion: {self.descripcion}, "\

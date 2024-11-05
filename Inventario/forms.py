@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario,Producto # Asegúrate de que esto apunta a tu modelo correcto
+from .models import Usuario,Producto,Categoria # Asegúrate de que esto apunta a tu modelo correcto
 
 
 #Formulario para agregar usuarios 
@@ -16,8 +16,15 @@ class CustomUserCreationForm(UserCreationForm):
         return user
 
 
-#Formulario para agregar producto
+#Formulario para agregar productos
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre','precio','descripcion','cantidad','imagen']
+        fields = ['nombre', 'precio', 'descripcion','disponible','imagen','categoria']
+        
+        
+class CategoriaForm(forms.ModelForm):
+    
+    class Meta:
+        model = Categoria
+        fields = ['nombre']  # Solo incluye el campo nombre
