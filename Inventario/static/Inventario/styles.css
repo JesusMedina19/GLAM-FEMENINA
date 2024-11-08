@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
+/* Estilos generales */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ffe6f0;
+    background: linear-gradient(to right, #ffe6f0, #ffffff); /* Fondo rosado blanco con gradiente */
     text-align: center;
     margin: 0;
     padding: 0;
@@ -25,6 +24,27 @@ h3 {
     margin-top: 30px;
 }
 
+/* Estilos del botón de regresar */
+.btn-regresar {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Cambié 'right' por 'left' para moverlo a la izquierda */
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid #ff5e99; /* Contorno rosado */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn-regresar:hover {
+    background-color: #ff5e99; /* Fondo rosado cuando pasa el ratón */
+    color: white;
+}
+
 .producto-lista {
     display: flex;
     flex-wrap: wrap;
@@ -44,6 +64,13 @@ h3 {
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #ffb6c1;
+    cursor: pointer; /* Indica que el elemento es seleccionable */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.producto-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .producto-nombre {
@@ -61,4 +88,10 @@ h3 {
     font-weight: 600;
     font-size: 0.9em;
     margin-top: 5px;
+}
+
+/* Estilo adicional para el producto seleccionado */
+.producto-item.selected {
+    border: 2px solid #ff8fb1; /* Cambia el borde para mostrar la selección */
+    box-shadow: 0 4px 12px rgba(255, 94, 153, 0.4); /* Resalta el producto seleccionado */
 }
