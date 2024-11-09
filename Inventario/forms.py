@@ -15,16 +15,18 @@ class CustomUserCreationForm(UserCreationForm):
             user.save()
         return user
 
-
-#Formulario para agregar productos
-class ProductoForm(forms.ModelForm):
-    class Meta:
-        model = Producto
-        fields = ['nombre', 'precio', 'descripcion','disponible','imagen','categoria']
-        
-        
+#Formulario para agregar las categorias
 class CategoriaForm(forms.ModelForm):
     
     class Meta:
         model = Categoria
         fields = ['nombre']  # Solo incluye el campo nombre
+        
+        
+#Formulario para agregar los producto
+
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre', 'descripcion', 'precio','imagen', 'categoria']
