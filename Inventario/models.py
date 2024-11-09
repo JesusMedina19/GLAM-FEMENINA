@@ -1,99 +1,142 @@
+# Importaciones necesarias de Django para definir modelos
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, UserManager,BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+# Importación de un campo especial para almacenar números de teléfono
 from phonenumber_field.modelfields import PhoneNumberField
 
+# Clase que define un gestor de usuarios personalizado para manejar la creación de usuarios
 class UsuarioManager(BaseUserManager):
     def create_user(self, usuario, contrasena=None, **extra_fields):
+        """
+        Crea y guarda un usuario regular con nombre de usuario y contraseña.
+        """
+        # Verifica que se proporcione el nombre de usuario
         if not usuario:
             raise ValueError('El nombre de usuario debe ser proporcionado')
+        
+        # Crea el usuario con los datos proporcionados
         usuario = self.model(usuario=usuario, **extra_fields)
-        usuario.set_password(contrasena)  # Usa set_password para guardar la contraseña
+        # Encripta la contraseña y la asigna al usuario
+        usuario.set_password(contrasena)
+        # Guarda el usuario en la base de datos
         usuario.save(using=self._db)
+        return usuario
+
     def create_superuser(self, usuario, contrasena=None, **extra_fields):
+        """
+        Crea y guarda un superusuario con nombre de usuario y contraseña.
+        """
+        # Define que este usuario es parte del personal y tiene permisos de superusuario
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
+        # Crea el superusuario con los datos proporcionados
         return self.create_user(usuario, contrasena, **extra_fields)
 
-#-----------------------------------
-# Modelo de usuario
+# Clase que define el modelo personalizado de Usuario
 class Usuario(AbstractBaseUser):
+    # Clave primaria autoincremental para el usuario
     id_usuario = models.AutoField(primary_key=True)
+    # Nombre completo del usuario
     nombre = models.CharField(max_length=30)
+    # Rol del usuario en el sistema, predeterminado a 'empleado'
     rol = models.CharField(max_length=15, default="empleado")
+    # Nombre de usuario único para autenticación
     usuario = models.CharField(max_length=50, unique=True)
-    #contrasena = models.CharField(max_length=128)
+    # Indica si el usuario es parte del personal
+    is_staff = models.BooleanField(default=False)
+    # Indica si el usuario tiene permisos de superusuario
+    is_superuser = models.BooleanField(default=False)
 
-    objects = UsuarioManager()  # Asegúrate de usar UsuarioManager aquí
-    USERNAME_FIELD = 'usuario' 
-    REQUIRED_FIELDS = ['nombre']  # Puedes agregar otros campos requeridos si lo deseas
-    
+    # Asigna el gestor personalizado
+    objects = UsuarioManager()
+
+    # Define el campo utilizado para autenticación
+    USERNAME_FIELD = 'usuario'
+    # Campos adicionales requeridos para crear un usuario
+    REQUIRED_FIELDS = ['nombre']
+
     def __str__(self):
-        return self.usuario
+        # Representación en cadena del objeto Usuario
+        return f'{self.nombre} ({self.usuario})'
 
-
-#Modelo de cliente   
+# Clase que define el modelo de Cliente
 class Cliente(models.Model):
-    id_cliente = models.AutoField(primary_key = True)
-    nombre = models.CharField(max_length = 30)
-    correo = models.EmailField(max_length = 150)
-    direccion = models.CharField(max_length = 150)
+    # Clave primaria autoincremental para el cliente
+    id_cliente = models.AutoField(primary_key=True)
+    # Nombre completo del cliente
+    nombre = models.CharField(max_length=30)
+    # Correo electrónico del cliente
+    correo = models.EmailField(max_length=150)
+    # Dirección del cliente
+    direccion = models.CharField(max_length=150)
+    # Número de teléfono en formato internacional
     telefono = PhoneNumberField()
 
-    
     def __str__(self):
+        # Representación en cadena del objeto Cliente
         return self.nombre
 
-
-#Modelo de Categoria
+# Clase que define el modelo de Categoría
 class Categoria(models.Model):
-    id_categoria = models.AutoField(primary_key = True)
-    nombre = models.CharField(max_length = 100)
-    
+    # Clave primaria autoincremental para la categoría
+    id_categoria = models.AutoField(primary_key=True)
+    # Nombre de la categoría de productos
+    nombre = models.CharField(max_length=100)
+
     def __str__(self):
+        # Representación en cadena del objeto Categoria
         return self.nombre
-    
-    
-    
-#Modelo de Producto    
+
+# Clase que define el modelo de Producto
 class Producto(models.Model):
-    id_producto = models.AutoField(primary_key = True)
-    nombre = models.CharField(max_length = 30)
-    precio = models.DecimalField(max_digits = 10,
-                                decimal_places = 2)
+    # Clave primaria autoincremental para el producto
+    id_producto = models.AutoField(primary_key=True)
+    # Nombre del producto
+    nombre = models.CharField(max_length=30)
+    # Precio del producto con hasta 10 dígitos y 2 decimales
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    # Descripción detallada del producto
     descripcion = models.TextField()
+    # Estado de disponibilidad del producto
     disponible = models.BooleanField(default=True)
-    imagen = models.ImageField(upload_to = 'productos/',
-                                null= True, blank = True)
+    # Imagen opcional del producto, guardada en la carpeta 'productos/'
+    imagen = models.ImageField(upload_to='productos/', null=True, blank=True)
+    # Relación con la categoría del producto
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
-    def __str__(self) -> str:
-        return f"Nombre: {self.nombre}, Precio: {self.precio}, " \
-            f"Descripcion: {self.descripcion}, "\
-            f"Disponible: {self.disponible}"
-
-
-
-#Modelo de Producto_Categoria
-class Categoria_Producto(models.Model):
-    id_categoria_cliente = models.AutoField(primary_key = True)
-    categoria = models.ForeignKey(Categoria, on_delete = models.CASCADE)
-    producto = models.ForeignKey(Producto, on_delete = models.CASCADE)
-    
     def __str__(self):
-        return f"{self.categoria.nombre} / {self.producto.nombre}"
+        # Representación en cadena del objeto Producto con su categoría
+        return f"{self.nombre} - {self.categoria.nombre}"
 
-
-
-#Modelo de ventas
+# Clase que define el modelo de Venta
 class Venta(models.Model):
-    id_venta = models.AutoField(primary_key = True)
-    id_usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
-    id_cliente = models.ForeignKey(Cliente, on_delete = models.CASCADE)
-    id_producto = models.ForeignKey(Producto, on_delete = models.CASCADE)
+    # Clave primaria autoincremental para la venta
+    id_venta = models.AutoField(primary_key=True)
+    # Relación con el usuario que realizó la venta
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    # Relación con el cliente al que se realizó la venta
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    # Relación muchos a muchos con los productos vendidos
+    productos = models.ManyToManyField(Producto)
+    # Fecha en que se realizó la venta
     fecha = models.DateField()
-    total = models.DecimalField(max_digits = 10 , 
-                                decimal_places = 2 )
-    
-    def __str__(self) -> str:  
-        return f"Date: {self.fecha}, Total: {self.total}"
+    # Total de la venta (opcional), calculado con el método `calcular_total`
+    total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def calcular_total(self):
+        """
+        Calcula el total de la venta sumando los precios de todos los productos en la venta.
+        """
+        # Calcula la suma de los precios de todos los productos en la venta
+        total = sum(producto.precio for producto in self.productos.all())
+        # Asigna el total calculado al campo 'total'
+        self.total = total
+        # Guarda los cambios en la base de datos
+        self.save()
+        return total
+
+    def __str__(self):
+        # Representación en cadena del objeto Venta con fecha y total
+        return f"Fecha: {self.fecha}, Total: {self.total}"
